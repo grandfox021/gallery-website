@@ -1,0 +1,12 @@
+{% if request.user %}
+
+<p>Hello user : {{request.user}}</p>
+
+{% for message in messages %}
+
+<div>{{message}}</p>
+
+{% endfor %}
+{% endif %}
+
+{{loginform}}

@@ -1,0 +1,106 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en" >
+  <head>
+  	<title>Website menu 02</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="{% static 'css/navbar12_css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	</head>
+	<body>
+	<section class="ftco-section">
+
+
+		<nav class="mynav navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	    <div>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+		</div>
+		
+		<form action="" class="searchform order-lg-last col-3">
+          <div class="form-group d-flex">
+            <input type="text" class="search_text form-control pl-3" placeholder="Search">
+            <button type="submit" placeholder="" class="search_button form-control search"><span class="fa fa-search"></span></button>
+		
+		</div>
+
+        </form>
+		
+	      <div class="collapse navbar-collapse col-8" id="ftco-nav">
+	        <ul class="navbar-nav mr-auto">
+	        	<li class="nav-item active"><a href="{% url 'homepage' %}" class="nav-link">Home</a></li>
+	        	<li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Page</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+              	<a class="dropdown-item" href="#">page 1</a>
+                <a class="dropdown-item" href="#">Page 2</a>
+                <a class="dropdown-item" href="#">Page 3</a>
+                <a class="dropdown-item" href="#">Page 4</a>
+              </div>
+            </li>
+	        	<li class="nav-item"><a href="{% url 'all_pictures' %}" class="nav-link">all pictures</a></li>
+	        	<li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+	        </ul>
+	      </div>
+	    </div>
+
+		{% if user.is_authenticated %}
+		{% if user.is_staff %}
+
+			
+		<div>
+			<a type="link" href="{% url 'customer_profile' user.id%}" class="login_register btn btn-outline-warning">Hello {{user}}</a>
+		</div>
+
+		<div>
+			<a type="link" href="{% url 'logout' %}" class="login_register btn btn-outline-danger">Logout</a>
+		</div>
+		
+		{% else %}{% if not user.is_staff %}
+
+		<div>
+			<a type="link" href="{% url 'customer_profile' user.customer.id%}" class="login_register btn btn-outline-warning">Hello {{user.customer}}</a>
+		</div>
+
+		<div>
+			<a type="link" href="{% url 'logout' %}" class="login_register btn btn-outline-danger">Logout</a>
+		</div>
+
+	
+		{% endif %}
+
+		{% endif %}
+
+		{% else %}
+			<div class="sign-btn col-2">
+				<a type="link" href="{% url 'register' %}" class="login_register btn btn-outline-warning">Login/Register</a>
+			</div>
+
+		{% endif %}
+
+	  </nav>
+    <!-- END nav -->
+
+	</section>
+
+	<script src="{% static 'js/navbar12_js/jquery.min.js'%}"></script>
+  <script src="{% static 'js/navbar12_js/popper.js'%}"></script>
+  <script src="{% static 'js/navbar12_js/bootstrap.min.js'%}"></script>
+  <script src="{% static 'js/navbar12_js/main.js'%}"></script>
+
+
+	</body>
+
+</html>
+
+

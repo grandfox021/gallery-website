@@ -1,0 +1,113 @@
+{% extends 'parent/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static 'css/file_upload_form_css/upload_form.css' %}">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+<div class="frame">
+	<div class="center">
+		<div class="title">
+			<h1>Drop file to upload</h1>
+		</div>
+		<form class="upload_form_input" method = "POST" enctype="multipart/form-data">
+			{% csrf_token %}
+		<div class="dropzone">
+			<img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
+			<input type="file" class="upload-input" name= "photo">
+		</div>
+
+		
+		<div class="form-group" >
+			<label> select a category</label>
+			<select name="category" class="form-control">
+
+				<option value="none">select a category...</option>
+
+				{% for category in categories  %} 
+
+				<option  value="{{category.id}}">{{category.name}}</option>
+
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="form-group m-3" >
+			<label>Create a new category</label>
+			<input name="category_new" type="text" placeholder="Create a new category " class="form-control">
+		</div>
+
+
+
+			  {% comment %} <div class="form-group"> #### for later####
+				<label for="exampleFormControlSelect2">Example multiple select</label>
+				<select multiple class="form-control" id="exampleFormControlSelect2">
+				  <option>1</option>
+				  <option>2</option>
+				  <option>3</option>
+				  <option>4</option>
+				  <option>5</option>
+				</select>
+			  </div>
+			   {% endcomment %}
+			  <div class="form-group">
+				<label for="exampleFormControlTextarea1">description</label>
+				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+			  </div>
+		<button type="submit" class=" upload_button_form login_register btn btn-outline-warning" name="uploadbutton">Upload file</button>
+
+		</form>
+
+</div>
+<!-- original pen: https://codepen.io/roydigerhund/pen/ZQdbeN  -->
+
+<!-- NO JS ADDED YET -->
+</div>
+
+{% comment %} {{imageform}} {% endcomment %}
+
+
+{% comment %} /////////////////////////////////////////////////////////////// {% endcomment %}
+{% comment %} <div class="upload_form_input">
+
+<form>
+	<div class="form-group">
+	  <label for="exampleFormControlInput1">Email address</label>
+	  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+	</div>
+	<div class="form-group">
+	  <label for="exampleFormControlSelect1">Example select</label>
+	  <select class="form-control" id="exampleFormControlSelect1">
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+		<option>5</option>
+	  </select>
+	</div>
+	<div class="form-group">
+	  <label for="exampleFormControlSelect2">Example multiple select</label>
+	  <select multiple class="form-control" id="exampleFormControlSelect2">
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+		<option>5</option>
+	  </select>
+	</div>
+	<div class="form-group">
+	  <label for="exampleFormControlTextarea1">Example textarea</label>
+	  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+	</div>
+  </form>
+
+</div>
+
+
+ {% endcomment %}
+
+
+
+
+  {% endblock  %}

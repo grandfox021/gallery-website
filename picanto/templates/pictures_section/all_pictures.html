@@ -1,0 +1,208 @@
+{% extends 'parent/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<br></br>
+<br></br>
+
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+
+ <style>
+
+
+
+    .img-thumbnail{
+
+        height: 200px;
+        object-fit: cover;
+
+    }
+
+
+    .list-group-item a :hover{
+
+        text-decoration: none;
+        color: rgb(255, 136, 0);
+        
+
+    }
+
+
+</style>
+
+    <body>
+
+        <div class="container"> 
+            <div class="row"> 
+                <div class="col-md-3">
+                    <div class="card m-3">
+                        <div class="card-header">
+                          Categories
+                        </div>
+        
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                            <a href="{% url 'all_pictures' %}" >all</a>
+        
+                        
+                        </li>
+                            
+       
+                        {% for category in categories %}
+
+                        <li class="list-group-item"><a  href="{% url 'all_pictures' %}?category={{category.name}}">{{ category }}</a> </li>
+      
+                        {% endfor %}
+                        {% comment %} <a href="{% url 'upload_file' user.customer.id%}" class="btn btn-block btn-sm btn-dark m-1"> Add a new photo </a> {% endcomment %}
+                      
+                      </ul>
+                    </div>
+              </div>
+
+              <div class="col-md-9">
+                <div class="row" >
+                    {% for picture in all_pictures  %}
+                    <div class="col-md-4">
+                        <div class="card my-2">
+                        <img class="img-thumbnail" src="{{picture.photo.url}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+    
+                                <small> Category: {{picture.category.name}} </small>
+                            </div>
+                            <div class="card-body">
+    
+                                <small> Customer: {{picture.customer}} </small>
+                            </div>
+    
+    
+                        <a class="btn btn-outline-dark btn-sm m-1" href="{% url 'view_photo' picture.id %}">View</a>
+                      </div>
+                    </div>
+                    {% empty %}
+                    <h3> No photos......... </h3>
+                    {% endfor %}
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</body>
+</html>
+    
+{% endblock  %}
+
+{% comment %} <div class="pictures"> 
+
+{% for picture in all_pictures %}
+
+    <div class="column">
+        <img class="pictures" src="{{picture.photo.url}}" style="width:100%">
+    </div>
+
+
+
+
+
+{% endfor %}
+
+</div>
+    
+
+</body>
+</html> {% endcomment %}
+
+
+
+
+#############################
+
+
+{% comment %} <style>
+
+
+    .img-thumbnail{
+
+        height: 200px;
+        object-fit: cover;
+
+    }
+
+
+    .list-group-item a{
+
+        text-decoration: none;
+        color: black;
+
+
+    }
+
+</style>
+
+</head>
+ {% endcomment %}
+
+
+{% comment %} <body class="m-5">
+
+<div class="container"> 
+    <div class="row"> 
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                  Categories
+                </div>
+
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                    <a href="{% url 'gallery' %}" >all</a>
+
+                
+                </li>
+                    
+
+
+                    {% for category in categories %}
+
+                  <li class="list-group-item"><a href="{% url 'gallery' %}?category={{category.name}}">{{ category }}</a> </li>
+
+                  {% endfor %}
+                  <a href="{% url 'addphoto'%}" class="btn btn-block btn-sm btn-dark m-1"> Add a new photo </a>
+                
+                </ul>
+              </div>
+        </div>
+        
+        <div class="col-md-9">
+            <div class="row" >
+                {% for photo in photos  %}
+                <div class="col-md-4">
+                    <div class="card my-2">
+                    <img class="img-thumbnail" src="{{photo.image.url}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+
+                            <small> Category: {{photo.category.name}} </small>
+                        </div>
+
+                    <a class="btn btn-outline-dark btn-sm m-1" href="{% url 'photo' photo.id %}">View</a>
+                  </div>
+                </div>
+                {% empty %}
+                <h3> No photos......... </h3>
+                {% endfor %}
+            </div>
+        </div>
+
+        
+        
+    </div>
+</div>
+
+
+</body>
+</html> {% endcomment %}

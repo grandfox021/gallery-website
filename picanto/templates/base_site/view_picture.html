@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/comment_section_css/style.css' %}">
+    <title>photo</title>
+</head>
+<body class="m-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col">
+
+               <a href="{% url 'all_pictures' %}"> <button class="btn btn-dark my-3" class="btn btn-dark my-3"> Go Back </button></a>
+
+                <div style="height: 90%vh;">
+
+                    <img style="max-height: 100% ;max-width: 100%; height: 80%; width: 80%;" src="{{picture.photo.url}}" alt="">
+                        <p>description : {{picture.description}} </p>
+                </div>
+ <!-- comment section-->
+
+                    
+
+
+<div>
+
+<section class="content-item" id="comments">
+    <div class="container">   
+    	<div class="row">
+            <div class="col-sm-8">   
+                <form method="POST" action="">
+                    {% csrf_token %}
+                	<h3 class="pull-left">New Comment</h3>
+                	{% comment %} <button type="submit" class="btn btn-normal pull-right">Submit</button> {% endcomment %}
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-sm-3 col-lg-2 hidden-xs">
+                            	<img class="img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-9 col-lg-10">
+                                <textarea class="form-control" id="message" name="comment_body" placeholder="Your message" style="margin-left:35%;margin-top:20%;" required=""></textarea>
+                            </div>
+                            <button type="submit" name="comment_submit_button" class="btn btn-warning" style="margin-left: 50%;margin: auto;width: 10%;">Submit</button>
+                        </div>  	
+                    </fieldset>
+                </form>
+
+                {% for comment in comments %}
+                <div class="media">
+                    <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt=""></a>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{comment.commenter_name}}</h4>
+                        <p>{{comment.comment_body}}</p>
+                        <ul class="list-unstyled list-inline media-detail pull-left">
+                            <li><i class="fa fa-calendar"></i>{{comment.date_added}}</li>
+                            <li><i class="fa fa-thumbs-up"></i>15</li>
+                        </ul>
+                        <ul class="list-unstyled list-inline media-detail pull-right">
+                            <li class=""><a href="">Like</a></li>
+                            <li class=""><a href="">Reply</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- COMMENT 4 - END -->
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+
+
+
+
+                    
+</div>
+<!-- comment section-->
+            </div>
+
+        </div>
+
+    </div>
+   
+
+</body>
+</html>

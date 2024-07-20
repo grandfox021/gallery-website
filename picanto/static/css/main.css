@@ -1,0 +1,60 @@
+ nav.mynav {
+    background-color:#03004f !important;
+}
+
+
+a.login_register {
+
+margin-left: 25px;
+z-index: 15;
+
+cursor: pointer;
+border-radius: 20px;
+border: 2px solid #fff;
+color: #ffffff;
+
+}
+
+button.search_button {
+
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+}
+
+input.search_text {
+
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+}
+
+.pictures {
+    padding-top: 20px;
+    width:300px ;
+    height: 200px;
+    list-style: none;
+    
+
+}
+
+
+.column{
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+}
+
+.upload_form_input{
+
+
+width: 75%;
+height: 75%;
+
+}
+
+.upload_button_form{
+
+
+    background-color: rgb(0, 0, 0);
+}
